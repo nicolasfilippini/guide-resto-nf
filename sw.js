@@ -1,5 +1,5 @@
 // Guide resto : hors ligne après la première visite. Version = empreinte du contenu (publier_guide.py).
-const CACHE = "guide-resto-1f93d83b8b";
+const CACHE = "guide-resto-1ebc055e83";
 const FICHIERS = ["./", "manifest.webmanifest", "icone-192.png", "icone-512.png", "apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FICHIERS.map(f => new Request(f, { cache: "reload" })))).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
